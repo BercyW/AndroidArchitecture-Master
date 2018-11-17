@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SimpleExampleMVVM</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading_comments">Loading Comments</string>
+    <string name="comments_list">Comments List</string>
+    <string name="name_of_the_product">Name of the Product</string>
+    <string name="loading_products">Loading Products</string>
+    <string name="products_list">Products List</string>
+</resources>

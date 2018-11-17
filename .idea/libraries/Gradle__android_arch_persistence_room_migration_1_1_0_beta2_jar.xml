@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: android.arch.persistence.room:migration:1.1.0-beta2@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/migration/1.1.0-beta2/f9d775e72cc19fa71a05e969caf93888fd1af762/migration-1.1.0-beta2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/migration/1.1.0-beta2/8f6c2cccbbdecf15c61a13e95a87d61b161e1436/migration-1.1.0-beta2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
