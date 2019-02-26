@@ -22,27 +22,65 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Nullable
     private final ProductClickCallback mProductClickCallback;
 
+
     public ProductAdapter(@Nullable ProductClickCallback clickCallback) {
         mProductClickCallback = clickCallback;
     }
 
-    @NonNull
+    public void setProductList(final List<? extends Product> productList) {
+        if(mProductList == null) {
+            mProductList = productList;
+            notifyItemRangeInserted(0,productList.size());
+        }else {
+            //if just use notifydatasetchanged(), it will no animation. and it just refresh recycler view ,very slow
+            DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+                @Override
+                public int getOldListSize() {
+                    return mProductList.size();
+                }
+
+                @Override
+                public int getNewListSize() {
+                    return productList.size();
+                }
+
+                @Override
+                public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+                    return mProductList.get(oldItemPosition).getId() == productList.get(newItemPosition).getId();
+                }
+
+                @Override
+                public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+                    Product newProduct = productList.get(newItemPosition);
+                    Product oldProduct = mProductList.get(oldItemPosition);
+                    return newProduct.getId() == oldProduct.getId()
+                            && Objects.equals(newProduct.getDescription(),oldProduct.getDescription())
+                            && Objects.equals(newProduct.getName(),oldProduct.getName())
+                            && newProduct.getPrice() == oldProduct.getPrice();
+                }
+            });
+              mProductList = productList;
+              result.dispatchUpdatesTo(this);
+        }
+    }
+
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ProductItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.product_item,parent,false);
         binding.setCallback(mProductClickCallback);
         return new ProductViewHolder(binding);
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(ProductViewHolder holder, int position) {
         holder.binding.setProduct(mProductList.get(position));
-        holder.binding.excutePendingBindings();
+        holder.binding.executePendingBindings();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mProductList == null ? 0:mProductList.size();
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {

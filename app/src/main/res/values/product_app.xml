@@ -2,5 +2,5 @@
 <resources>
 
     <string name="product_price">Price: $%d</string>
-
+    <dimen name="product_item_min_height">100dp</dimen>
 </resources>

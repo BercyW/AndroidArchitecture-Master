@@ -6,13 +6,13 @@ import android.arch.persistence.room.PrimaryKey;
 import com.example.c052735.simpleexamplemvvm.model.Product;
 
 @Entity(tableName = "products")
-public class ProductEntity implements Product{
+public class ProductEntity implements Product {
 
     @PrimaryKey
-    private  int id;
+    private int id;
     private String name;
-    private  String description;
-    private  int price;
+    private String description;
+    private int price;
 
     public void setId(int id) {
         this.id = id;
@@ -56,8 +56,9 @@ public class ProductEntity implements Product{
         this.description = description;
         this.price = price;
     }
+
     public ProductEntity(Product product) {
-        this.id= product.getId();
+        this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
         this.price = product.getPrice();

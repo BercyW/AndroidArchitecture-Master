@@ -8,4 +8,11 @@
     <string name="name_of_the_product">Name of the Product</string>
     <string name="loading_products">Loading Products</string>
     <string name="products_list">Products List</string>
+
+
+    <string name="no_comments">No comments</string>
+    <string name="cd_products_list">Products list</string>
+    <string name="cd_comments_list">Comments list</string>
+    <string name="cd_product_name">Name of the product</string>
+
 </resources>
